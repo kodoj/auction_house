@@ -23,8 +23,9 @@ public class RegisterController {
 
     @PutMapping("/register/{login}{password}")
     public void addUser(@PathVariable String login, @PathVariable String password) {
-        String hashedPassword = hashPassword(password);
-        userService.addUser(user);
+        String hashedPassword = PasswordHasher.hashPassword(password);
+        User newUser = new User(login, hashedPassword);
+        userService.addUser(newUser);
     }
 
 }
