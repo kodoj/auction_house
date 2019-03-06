@@ -2,14 +2,19 @@ package com.codecool.auction_house.service;
 
 import com.codecool.auction_house.dao.UserDao;
 import com.codecool.auction_house.model.users.User;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 
+@Service
 public class UserService {
 
     private final UserDao userDao;
 
-    public UserService(UserDao userDao) {
+    @Autowired
+    public UserService(@Qualifier("UserDaoPostgres") UserDao userDao) {
         this.userDao = userDao;
     }
 

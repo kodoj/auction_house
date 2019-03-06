@@ -2,14 +2,19 @@ package com.codecool.auction_house.service;
 
 import com.codecool.auction_house.dao.ItemDao;
 import com.codecool.auction_house.model.items.Item;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class ItemService {
 
     private final ItemDao itemDao;
 
-    public ItemService(ItemDao itemDao) {
+    @Autowired
+    public ItemService(@Qualifier("ItemDaoPostgres") ItemDao itemDao) {
         this.itemDao = itemDao;
     }
 

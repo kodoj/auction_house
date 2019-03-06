@@ -1,9 +1,11 @@
 package com.codecool.auction_house.dao;
 
 import com.codecool.auction_house.model.users.User;
+import org.springframework.stereotype.Repository;
 
 import java.math.BigDecimal;
 
+@Repository("UserDaoPostgres")
 public class UserDaoImpl implements UserDao{
 
 

@@ -1,5 +1,7 @@
 package com.codecool.auction_house.model.users;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.math.BigDecimal;
 import java.util.Objects;
 
@@ -11,10 +13,18 @@ public class User implements Profile{
     BigDecimal gold = new BigDecimal(0);
     String description;
 
+    public User(@JsonProperty("login") String login,
+                @JsonProperty("hashedPassword") String hashedPassword) {
+        this.login = login;
+        this.hashedPassword = hashedPassword;
+    }
+
+
     @Override
     public boolean authenticate(char[] password) {
         return true;
     }
+
 
     public Long getId() {
         return id;

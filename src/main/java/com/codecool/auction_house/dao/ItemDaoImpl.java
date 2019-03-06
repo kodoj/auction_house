@@ -1,10 +1,12 @@
 package com.codecool.auction_house.dao;
 
 import com.codecool.auction_house.model.items.Item;
+import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Repository("ItemDaoPostgres")
 public class ItemDaoImpl implements ItemDao{
 
     List<Item> items = new ArrayList<>();
