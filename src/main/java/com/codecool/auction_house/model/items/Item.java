@@ -4,6 +4,7 @@ import java.util.Objects;
 
 public class Item {
 
+    Long id;
     String name;
     String descriptin;
     ItemType type;
@@ -35,6 +36,10 @@ public class Item {
 
     public void setGame(Game game) {
         this.game = game;
+    }
+
+    public Long getId() {
+        return id;
     }
 
     @Override
