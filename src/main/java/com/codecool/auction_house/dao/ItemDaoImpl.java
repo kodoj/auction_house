@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 import java.util.ArrayList;
 import java.util.List;
 
-@Repository("ItemDaoPostgres")
+//@Repository("ItemDaoPostgres")
 public class ItemDaoImpl implements ItemDao{
 
     List<Item> items = new ArrayList<>();

@@ -1,4 +1,4 @@
-package com.codecool.auction_house.api;
+package com.codecool.auction_house.controller;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;

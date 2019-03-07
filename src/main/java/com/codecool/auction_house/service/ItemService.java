@@ -8,12 +8,12 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service
+//@Service
 public class ItemService {
 
     private final ItemDao itemDao;
 
-    @Autowired
+//    @Autowired
     public ItemService(@Qualifier("ItemDaoPostgres") ItemDao itemDao) {
         this.itemDao = itemDao;
     }

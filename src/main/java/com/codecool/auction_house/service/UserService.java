@@ -8,12 +8,12 @@ import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 
-@Service
+//@Service
 public class UserService {
 
     private final UserDao userDao;
 
-    @Autowired
+//    @Autowired
     public UserService(@Qualifier("UserDaoPostgres") UserDao userDao) {
         this.userDao = userDao;
     }

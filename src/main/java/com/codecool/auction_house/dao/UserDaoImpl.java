@@ -5,7 +5,7 @@ import org.springframework.stereotype.Repository;
 
 import java.math.BigDecimal;
 
-@Repository("UserDaoPostgres")
+//@Repository("UserDaoPostgres")
 public class UserDaoImpl implements UserDao{
 
 

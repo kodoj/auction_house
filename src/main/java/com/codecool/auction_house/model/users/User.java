@@ -1,20 +1,37 @@
 package com.codecool.auction_house.model.users;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
+import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import java.math.BigDecimal;
 import java.util.Objects;
 
+@Entity
+@Table(name = "users")
+@EntityListeners(AuditingEntityListener.class)
 public class User implements Profile{
 
-    Long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "user_id")
+    int id;
+
+    @NotBlank
+    private
     String login;
+
+    @NotBlank
+    @Column(name = "hashed_password")
+    private
     String hashedPassword;
-    BigDecimal gold = new BigDecimal(0);
-    String description;
+
+    private BigDecimal gold = new BigDecimal(0);
+    private String description;
 
     public User(@JsonProperty("login") String login,
-                @JsonProperty("hashedPassword") String hashedPassword) {
+                @JsonProperty("password") String hashedPassword) {
         this.login = login;
         this.hashedPassword = hashedPassword;
     }
@@ -26,7 +43,7 @@ public class User implements Profile{
     }
 
 
-    public Long getId() {
+    public int getId() {
         return id;
     }
 
