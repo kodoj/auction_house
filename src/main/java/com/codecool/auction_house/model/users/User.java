@@ -37,9 +37,11 @@ public class User implements Profile{
     private String description;
 
     public User(@JsonProperty("login") String login,
-                @JsonProperty("password") String hashedPassword) {
+                @JsonProperty("password") String hashedPassword,
+                @JsonProperty("email") String email) {
         this.login = login;
         this.hashedPassword = hashedPassword;
+        this.email = email;
     }
 
 
