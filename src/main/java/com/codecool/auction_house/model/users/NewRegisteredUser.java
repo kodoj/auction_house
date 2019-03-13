@@ -4,6 +4,8 @@ public class NewRegisteredUser {
 
     private String login;
     private String password;
+
+    private String matchingPassword;
     @ValidEmail
     private String email;
 
@@ -22,5 +24,9 @@ public class NewRegisteredUser {
 
     public String getEmail() {
         return email;
+    }
+
+    public String getMatchingPassword() {
+        return matchingPassword;
     }
 }
