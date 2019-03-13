@@ -27,20 +27,3 @@ public class RegisterController {
         return userRepository.save(newUser);
     }
 }
-
-
-
-//    // VERSION WITH DEPENDENCY INJECTION DESIGN PATTERN
-//    private final UserService userService;
-//
-//    @Autowired
-//    public RegisterController(UserService userService) {
-//        this.userService = userService;
-//    }
-
-//    @PutMapping("/register/{login}{password}")
-//    public void addUser(@PathVariable String login, @PathVariable String password) {
-//        String hashedPassword = PasswordHasher.hashPassword(password);
-//        User newUser = new User(login, hashedPassword);
-//        userService.addUser(newUser);
-//    }
