@@ -4,8 +4,10 @@ public class NewRegisteredUser {
 
     private String login;
     private String password;
+    @ValidEmail
+    private String email;
 
-    public NewRegisteredUser(String login, String password) {
+    public NewRegisteredUser(String login, String password, String email) {
         this.login = login;
         this.password = password;
     }
@@ -16,5 +18,9 @@ public class NewRegisteredUser {
 
     public String getLogin() {
         return login;
+    }
+
+    public String getEmail() {
+        return email;
     }
 }

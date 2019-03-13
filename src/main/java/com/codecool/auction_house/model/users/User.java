@@ -24,7 +24,6 @@ public class User implements Profile{
     private
     String login;
 
-    @ValidEmail
     @NotNull
     @NotEmpty
     private String email;
