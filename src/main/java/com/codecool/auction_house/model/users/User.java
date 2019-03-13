@@ -5,6 +5,8 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.util.Objects;
 
@@ -21,6 +23,11 @@ public class User implements Profile{
     @NotBlank
     private
     String login;
+
+    @ValidEmail
+    @NotNull
+    @NotEmpty
+    private String email;
 
     @NotBlank
     @Column(name = "hashed_password")
@@ -77,6 +84,14 @@ public class User implements Profile{
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     @Override

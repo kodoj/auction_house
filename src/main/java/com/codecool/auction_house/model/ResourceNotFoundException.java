@@ -1,4 +1,4 @@
-package com.codecool.auction_house.exception;
+package com.codecool.auction_house.model;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
