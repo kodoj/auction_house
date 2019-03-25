@@ -6,7 +6,6 @@ public class NewRegisteredUser {
     private String login;
     private String password;
     private String matchingPassword;
-    @ValidEmail
     private String email;
 
     public NewRegisteredUser(String login, String password, String matchingPassword, String email) {

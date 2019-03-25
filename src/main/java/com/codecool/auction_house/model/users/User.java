@@ -21,17 +21,16 @@ public class User implements Profile{
     int id;
 
     @NotBlank
-    private
-    String login;
+    private String login;
 
     @NotNull
     @NotEmpty
+    @ValidEmail
     private String email;
 
     @NotBlank
     @Column(name = "hashed_password")
-    private
-    String hashedPassword;
+    private String hashedPassword;
 
     private BigDecimal gold = new BigDecimal(0);
     private String description;
