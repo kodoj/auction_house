@@ -12,8 +12,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api")
 public class RegisterController {
 
-    private final
-    UserRepository userRepository;
+    private final UserRepository userRepository;
 
     @Autowired
     public RegisterController(UserRepository userRepository) {
