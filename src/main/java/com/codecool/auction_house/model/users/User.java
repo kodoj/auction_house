@@ -35,9 +35,9 @@ public class User implements Profile{
     private BigDecimal gold = new BigDecimal(0);
     private String description;
 
-    public User(@JsonProperty("login") String login,
-                @JsonProperty("password") String hashedPassword,
-                @JsonProperty("email") String email) {
+    public User() {}
+
+    public User(String login, String hashedPassword, String email) {
         this.login = login;
         this.hashedPassword = hashedPassword;
         this.email = email;

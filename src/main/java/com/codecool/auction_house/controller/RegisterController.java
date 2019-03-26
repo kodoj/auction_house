@@ -1,15 +1,20 @@
 package com.codecool.auction_house.controller;
 
 import com.codecool.auction_house.model.users.NewRegisteredUser;
+import com.codecool.auction_house.model.users.PasswordMatcherValidator;
 import com.codecool.auction_house.model.users.User;
+import com.codecool.auction_house.model.users.ValidEmail;
 import com.codecool.auction_house.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.ConstraintViolationException;
 
-@RestController
-@RequestMapping("/api")
+
+@Controller
+@RequestMapping("/register.html")
 public class RegisterController {
 
     private final UserRepository userRepository;
@@ -19,17 +24,29 @@ public class RegisterController {
         this.userRepository = userRepository;
     }
 
+    @GetMapping
+    public String register() {
+        return "register";
+    }
 
-    @PostMapping("/register")
-    public String addUser(@RequestBody NewRegisteredUser user) {
-        String hashedPassword = PasswordHasher.hashPassword(user.getPassword());
-        User newUser = new User(user.getLogin(), hashedPassword, user.getEmail());
+    @PostMapping
+    public String addUser(@RequestParam String login,
+                          @RequestParam String password,
+                          @RequestParam String matchingPassword,
+                          @RequestParam String email) {
+
+        if (!password.equals(matchingPassword)) {
+            return "passwordsDoesNotMatch";
+        }
         try {
+            NewRegisteredUser newRegisteredUser = new NewRegisteredUser(login, password, matchingPassword, email);
+            String hashedPassword = PasswordHasher.hashPassword(newRegisteredUser.getPassword());
+            User newUser = new User(newRegisteredUser.getLogin(), hashedPassword, newRegisteredUser.getEmail());
             userRepository.save(newUser);
-        } catch (DataIntegrityViolationException e) {
-            return "this email is already registered";
+        } catch (ConstraintViolationException e) {
+            return "emailAlreadyTaken";
         }
 
-        return "User added succesfully";
+        return "login";
     }
 }

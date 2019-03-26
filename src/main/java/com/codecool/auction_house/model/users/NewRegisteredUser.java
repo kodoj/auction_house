@@ -1,5 +1,7 @@
 package com.codecool.auction_house.model.users;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 @PasswordMatcher
 public class NewRegisteredUser {
 
@@ -8,7 +10,10 @@ public class NewRegisteredUser {
     private String matchingPassword;
     private String email;
 
-    public NewRegisteredUser(String login, String password, String matchingPassword, String email) {
+    public NewRegisteredUser(@JsonProperty("login") String login,
+                             @JsonProperty("password") String password,
+                             @JsonProperty("matchingPassword") String matchingPassword,
+                             @JsonProperty("email") String email) {
         this.login = login;
         this.password = password;
         this.matchingPassword = matchingPassword;
