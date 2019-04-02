@@ -29,9 +29,9 @@ public class UserController {
     public String showUser(@PathVariable int id, Model model) {
         User loggedUser = userRepository.getOne(id);
 
-        model.addAttribute("currentUserLogin", loggedUser.getLogin());
-        model.addAttribute("currentUserId", loggedUser.getId());
-        model.addAttribute("currentUserGold", loggedUser.getGold());
+        model.addAttribute("currentUser", loggedUser);
+//        model.addAttribute("currentUserId", loggedUser.getId());
+//        model.addAttribute("currentUserGold", loggedUser.getGold());
 
         return "account";
     }
