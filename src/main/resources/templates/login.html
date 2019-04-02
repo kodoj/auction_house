@@ -5,7 +5,7 @@
 </head>
 <body>
 <h1>Login page</h1>
-<form th:action="@{/login.html}" method="post">
+<form method="post" th:action="@{/login.html}">
     <label for="login">Login</label>:
     <input type="text" id="login" name="login" autofocus="autofocus" /> <br />
     <label for="password">Password</label>:
@@ -13,7 +13,7 @@
     <input type="submit" value="Log in" />
 </form>
 
-<form th:action="@{/register.html}" method="get">
+<form method="get" th:action="@{/register.html}">
     <td>
         <button th:onclick="'window.location.href=\'/update?server='register.html'\''">Don't have an account? Register now!
         </button>

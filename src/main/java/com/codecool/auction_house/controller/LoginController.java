@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
 
@@ -25,12 +26,13 @@ public class LoginController {
 
     @GetMapping
     public String login() {
-        return "login";
+        return "/login";
     }
 
     @PostMapping
     public String logIn(@RequestParam String login,
-                        @RequestParam String password) {
+                        @RequestParam String password,
+                        RedirectAttributes redirectAttrs) {
         String hashedPassword = PasswordHasher.hashPassword(password);
 
         UserSpecification spec1 = new UserSpecification(new SearchCriteria("login", ":", login));
@@ -40,8 +42,9 @@ public class LoginController {
 
         if(result.size() > 0) {
             User foundUser = result.get(0);
-            return "User found";
+            redirectAttrs.addAttribute("id", foundUser.getId());
+            return "redirect:account.html/{id}";
         }
-        return "login";
+        return "/login";
     }
 }
