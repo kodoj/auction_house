@@ -7,6 +7,11 @@
 <h1>User page</h1>
 <h2>User : <span th:text="${currentUser.login}"></span></h2>
 <span>ID : <span th:text="${currentUser.id}"></span></span><br>
-<span>Gold : <span th:text="${currentUser.gold}"></span></span>
+<span>Gold : <span th:text="${currentUser.gold}"></span></span><br>
+
+<form action="/action_page.php" method="get" id="delete">
+    <input type="checkbox" name="delete" value="delete1">Delete your account?<br>
+    <button type="submit" form="delete" value="Submit">Submit</button>
+</form>
 </body>
 </html>
