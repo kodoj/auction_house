@@ -9,9 +9,9 @@
 <span>ID : <span th:text="${currentUser.id}"></span></span><br>
 <span>Gold : <span th:text="${currentUser.gold}"></span></span><br>
 
-<form action="/action_page.php" method="get" id="delete">
+<form action="/account.html/" method="post" id="delete">
     <input type="checkbox" name="delete" value="delete1">Delete your account?<br>
-    <button type="submit" form="delete" value="Submit">Submit</button>
+    <button type="submit" value="Delete" name="deleteButton">Delete</button>
 </form>
 </body>
 </html>

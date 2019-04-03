@@ -5,19 +5,15 @@ import com.codecool.auction_house.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-
-import java.util.Optional;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 @RequestMapping("/account.html")
 public class UserController {
 
     private final UserRepository userRepository;
+    private User loggedUser = null;
 
     @Autowired
     public UserController(UserRepository userRepository) {
@@ -27,12 +23,27 @@ public class UserController {
 
     @GetMapping("/{id}")
     public String showUser(@PathVariable int id, Model model) {
-        User loggedUser = userRepository.getOne(id);
-
+        loggedUser = userRepository.getOne(id);
         model.addAttribute("currentUser", loggedUser);
-//        model.addAttribute("currentUserId", loggedUser.getId());
-//        model.addAttribute("currentUserGold", loggedUser.getGold());
 
         return "account";
+    }
+
+    @PostMapping
+    public String deleteAccount(@RequestParam("deleteButton")String[] checkboxValue) {
+
+        if(checkboxValue[0] != null) {
+            userRepository.deleteById(loggedUser.getId());
+            loggedUser = null;
+            return "login";
+        }
+
+        return "account";
+    }
+
+    private void checkingAccess(int id) {
+        if(loggedUser == null) {
+            loggedUser = userRepository.getOne(id);
+        }
     }
 }
