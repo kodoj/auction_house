@@ -30,20 +30,15 @@ public class UserController {
     }
 
     @PostMapping
-    public String deleteAccount(@RequestParam("deleteButton")String[] checkboxValue) {
+    public String deleteAccount(@RequestParam(value="delete", required=false)String checkboxValue, Model model) {
 
-        if(checkboxValue[0] != null) {
+        if(checkboxValue != null) {
             userRepository.deleteById(loggedUser.getId());
             loggedUser = null;
             return "login";
         }
 
+        model.addAttribute("currentUser", loggedUser);
         return "account";
-    }
-
-    private void checkingAccess(int id) {
-        if(loggedUser == null) {
-            loggedUser = userRepository.getOne(id);
-        }
     }
 }
