@@ -2,8 +2,6 @@ package com.codecool.auction_house.logger;
 
 import org.junit.Test;
 
-import static org.junit.Assert.*;
-
 public class Log4J2PropertiesConfTest {
 
     @Test

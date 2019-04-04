@@ -1,0 +1,6 @@
+[INFO ] 2019-04-04 22:05:21.939 [http-nio-8080-exec-9] UserController - This is an info message
+[WARN ] 2019-04-04 22:05:21.940 [http-nio-8080-exec-9] UserController - This is a warn message
+[ERROR] 2019-04-04 22:05:21.940 [http-nio-8080-exec-9] UserController - This is an error message
+[INFO ] 2019-04-04 22:12:27.152 [http-nio-8080-exec-9] UserController - This is an info message
+[WARN ] 2019-04-04 22:12:27.153 [http-nio-8080-exec-9] UserController - This is a warn message
+[INFO ] 2019-04-04 22:14:46.722 [http-nio-8080-exec-8] UserController - Delete method used on Konrad
